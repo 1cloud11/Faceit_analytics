@@ -98,23 +98,7 @@ class MainDataCollector(InputLinter):
         tim = (datetime.datetime.now()).time()
         logging.info(f'Готово {tim}')
 
-    def current_match_info(self, match_id):
-        request_faceit_url = "https://open.faceit.com/data/v4/matches/" + match_id
-        faceit_response = requests.get(request_faceit_url, headers=FACEIT_HEADERS).json()
-        team_1 = []
-        team_2 = []
-        for player in faceit_response["teams"]["faction1"]["roster"]:
-            team_1.append(player["nickname"])
-        for player in faceit_response["teams"]["faction2"]["roster"]:
-            team_2.append(player["nickname"])
-        current_map = faceit_response["voting"]["map"]["pick"][0]
-        results = {"team_1": team_1, "team_2": team_2, "current_map": current_map}
-        return results
 
-    def current_match_data_collector(self, match_id):
-        current_match = self.current_match_info(match_id)
-        for player in current_match["team_1"]:
-            getter_controller(faceit_name=player)
             
 if __name__ == '__main__':
     a = MainDataCollector()
