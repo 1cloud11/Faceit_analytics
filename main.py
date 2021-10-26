@@ -111,14 +111,8 @@ class MainDataCollector(InputLinter):
         results = {"team_1": team_1, "team_2": team_2, "current_map": current_map}
         return results
 
-    def map_stats_per_player(self, map, team_1, team_2):
-        current_match = self.current_match_info(match_id)
-
-
-
     def current_match_data_collector(self, match_id):
         current_match = self.current_match_info(match_id)
-
         for player in current_match["team_1"]:
             getter_controller(faceit_name=player)
             
