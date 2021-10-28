@@ -2,7 +2,6 @@ from settings import FACEIT_HEADERS, STEAM_API_KEY
 import requests
 import re
 import xml.etree.ElementTree as et
-import json
 import logging
 import datetime
 
@@ -93,8 +92,8 @@ class MainDataCollector(InputLinter):
             "FACEIT_LEVEL": faceit_level,
             "FACEIT_ELO": faceit_elo,
             }
-       
-        print(user_info)
+        for key, value in user_info.items():
+            print(f"{key}: {value}")
         tim = (datetime.datetime.now()).time()
         logging.info(f'Готово {tim}')
 
